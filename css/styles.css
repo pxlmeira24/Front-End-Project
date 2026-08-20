@@ -1,6 +1,6 @@
 :root {
     --font-body: "Urbanist", sans-serif;
-    --color-light: #F8E7D4;
+    --color-light: #f8e7d4c4;
     --color-dark: #342717;
     --font-sm: 1.2rem;
     --font-lg: clamp(2.5rem, 5vw + 1rem, 6rem);
@@ -66,7 +66,6 @@ img {
     color: var(--color-dark);
 }
 
-/*************   grid-01   *************/
 .grid-01 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -89,9 +88,6 @@ img {
     background-color: var(--color-dark);
     color: var(--color-light);
 }
-/************* fim grid-01 *************/
-
-/*************   logos   *************/
 
 .logos {
     overflow: hidden;
@@ -113,7 +109,7 @@ img {
     width: auto;
     height: 80px;
     margin-inline: var(--spacing-sm);
-    opacity: .6;
+    opacity: .8;
     transition: .5s;
 
     &:hover {
@@ -130,46 +126,36 @@ img {
     }
 }
 
-/************* fim logos *************/
-
-
-/*************   grid-02   *************/
 .grid-02 {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--spacing-md);
 }
 
 .box-2 a {
-    display: block;
-    width: 160px;
-    margin: 15px auto;
-    padding: 14px 20px;
     background-color: var(--color-dark);
     color: var(--color-light);
-    text-align: center;
-    text-decoration: none;
-    border-radius: 15px;
 }
 
-.box-2 {
-    border: 1px solid #e5e5e5;
-    border-radius: 15px;
-    overflow: hidden;
+.box-2 {    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    border: 1px solid var(--color-light);
+    border-radius: var(--radius-md);
+    padding-bottom: var(--spacing-md);
 }
 
-.box-2 h3 {
-    margin-top: 35px;
-    margin-bottom: 20px;
+.box-2 img{
+    border-top-left-radius: var(--radius-md);
+    border-top-right-radius: var(--radius-md);
 }
-/************* fim grid-02 *************/
-
-/*************   grid-03   *************/
 
 .grid-03 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 300px 300px 400px;
+    grid-auto-rows: 400px;
     gap: var(--spacing-md);
 }
 
@@ -179,11 +165,10 @@ img {
 }
 
 .box-03 img {
-    width: 100%;
     height: 100%;
     object-fit: cover;
 }
-
+ 
 .row-2 {
     grid-row: span 2;
 }
@@ -192,34 +177,35 @@ img {
     grid-column: span 2;
 }
 
-/************* fim grid-03 *************/
+@media (width: 1024px) {
 
-/*************   responsivo   *************/
-
-@media (max-width: 768px) {
+    .hero h1 {
+        width: 80%;
+    }
 
     .grid-01 {
         grid-template-columns: 1fr;
     }
 
-    .grid-02 {
-        grid-template-columns: repeat(2, 1fr);
+    .box-1:last-child{
+        grid-column: span 2;
     }
 
     .grid-03 {
         grid-template-columns: 1fr;
-        grid-template-rows: auto;
+        grid-auto-rows: auto;
     }
-
-    .row-2,
-    .col-2 {
-        grid-row: auto;
-        grid-column: auto;
-    }
-
-    .box-03 {
-        height: 300px;
-    }
+    
+    .col-2 {grid-column: span 1;}
+    .row-2 {grid-row: span 1;}
 }
 
-/************* fim responsivo *************/
+@media ( width <= 680px){
+    .grid-01 {
+        grid-template-columns: 1fr;
+    }
+
+    .box-1:last-child {
+        grid-column: span 1;
+    }
+}
